@@ -56,7 +56,7 @@ export const login = async (req, res) => {
     /*   if matched lets generate the token */
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     delete user.password; // a masterpiece
-    res.status(200).json({ token, user });
+    res.status(200).json({ token, user }); // send entire user info to client side
   } catch (error) {
     res.status(500).json({ error: err.message });
   }
